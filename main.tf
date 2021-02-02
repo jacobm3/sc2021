@@ -3,7 +3,7 @@ provider "vault" {
   # environment variables described above, so that each user can have
   # separate credentials set in the environment.
   #
-
+  namespace = "sc2021"
 }
 
 data "vault_generic_secret" "gcp_token" {
