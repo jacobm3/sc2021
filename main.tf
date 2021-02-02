@@ -7,7 +7,8 @@ provider "vault" {
 }
 
 data "vault_generic_secret" "gcp_token" {
-  path = "gcp/token/my-token-roleset"
+  #path = "gcp/token/my-token-roleset"
+  path = "kv/secret"
 }
 
 
