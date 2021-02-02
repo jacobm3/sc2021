@@ -1,10 +1,10 @@
-resource "google_service_account" "gce-app1-svc-acct" {
-  account_id   = "gce-app1"
-  display_name = "gce-app1 Service Account"
+resource "google_service_account" "gce-db1-svc-acct" {
+  account_id   = "gce-db1"
+  display_name = "gce-db1 Service Account"
 }
 
-resource "google_compute_instance" "gce-app1" {
-  name         = "gce-app1"
+resource "google_compute_instance" "gce-db1" {
+  name         = "gce-db1"
   machine_type = "e2-standard-2"
   zone         = "us-central1-c"
 
@@ -33,12 +33,13 @@ resource "google_compute_instance" "gce-app1" {
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.gce-app1-svc-acct.email
+    email  = google_service_account.gce-db1-svc-acct.email
     scopes = ["cloud-platform"]
   }
 }
 
-output "gce_app1" {
-  value = google_compute_instance.gce-app1.network_interface[0].access_config[0].nat_ip
+output "gce_db1" {
+  value = google_compute_instance.gce-db1.network_interface[0].access_config[0].nat_ip
 }
+
 
