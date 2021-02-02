@@ -44,6 +44,7 @@ path "auth/token/create" {
 }
 EOF
 
+# This token goes in the TFE workspace sensitive env var VAULT_TOKEN
 vault token create -policy=gcp-creds -ttl=72h
 
 # read oauth token
